@@ -1,5 +1,10 @@
 import { createReadStream } from 'node:fs'
-import { S3Client, S3ClientConfig } from '@aws-sdk/client-s3'
+import {
+  DeleteObjectCommand,
+  ListObjectsV2Command,
+  S3Client,
+  S3ClientConfig,
+} from '@aws-sdk/client-s3'
 import { Upload } from '@aws-sdk/lib-storage'
 import { env } from '../env'
 
@@ -40,4 +45,33 @@ export async function uploadToS3({
   }).done()
 
   console.log('Backup uploaded to S3...')
+
+  // Check if there are more than 7 objects in the bucket
+  const listParams = {
+    Bucket: bucket,
+  }
+  const { Contents } = await client.send(new ListObjectsV2Command(listParams))
+  if (Contents && Contents.length > env.BACKUP_KEEP) {
+    // Sort objects by LastModified date
+    Contents.sort(
+      (a, b) =>
+        new Date(a.LastModified!).getTime() -
+        new Date(b.LastModified!).getTime(),
+    )
+
+    const voltas = Contents.length - env.BACKUP_KEEP - 1
+
+    for (let index = 0; index < voltas; index++) {
+      const oldestObjectKey = Contents[index].Key
+
+      const deleteParams = {
+        Bucket: bucket,
+        Key: oldestObjectKey,
+      }
+
+      await client.send(new DeleteObjectCommand(deleteParams))
+
+      console.log(`Deleted oldest backup: ${oldestObjectKey}`)
+    }
+  }
 }

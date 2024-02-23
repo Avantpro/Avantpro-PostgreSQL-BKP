@@ -19,7 +19,7 @@ class envClass {
 
   constructor() {
     this.SCHEDULE = process.env.SCHEDULE || ''
-    this.BACKUP_KEEP = Number(process.env.BACKUP_KEEP || 10)
+    this.BACKUP_KEEP = Number(process.env.BACKUP_KEEP || 10) - 1
 
     this.RUN_ON_STARTUP = Boolean(process.env.RUN_ON_STARTUP) || false
 
