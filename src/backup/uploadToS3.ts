@@ -1,0 +1,43 @@
+import { createReadStream } from 'node:fs'
+import { S3Client, S3ClientConfig } from '@aws-sdk/client-s3'
+import { Upload } from '@aws-sdk/lib-storage'
+import { env } from '../env'
+
+export async function uploadToS3({
+  name,
+  path,
+}: {
+  name: string
+  path: string
+}) {
+  console.log('Uploading backup to S3...')
+
+  const bucket = env.AWS_S3_BUCKET
+  const finalName = `${env.AWS_S3_PREFIX}/${name}`
+
+  const clientOptions: S3ClientConfig = {
+    region: env.AWS_S3_REGION,
+    credentials: {
+      accessKeyId: env.AWS_S3_ACCESS_KEY_ID,
+      secretAccessKey: env.AWS_S3_SECRET_ACCESS_KEY,
+    },
+  }
+
+  if (env.AWS_S3_ENDPOINT) {
+    console.log(`Using custom endpoint: ${env.AWS_S3_ENDPOINT}`)
+    clientOptions['endpoint'] = env.AWS_S3_ENDPOINT
+  }
+
+  const client = new S3Client(clientOptions)
+
+  await new Upload({
+    client,
+    params: {
+      Bucket: bucket,
+      Key: finalName,
+      Body: createReadStream(path),
+    },
+  }).done()
+
+  console.log('Backup uploaded to S3...')
+}

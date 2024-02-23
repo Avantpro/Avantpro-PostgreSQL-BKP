@@ -1,0 +1,49 @@
+import { filesize } from 'filesize'
+import { exec, execSync } from 'node:child_process'
+import { statSync } from 'node:fs'
+import path from 'node:path'
+import { env } from '../env'
+
+export async function makeBKP(filePath: string) {
+  console.log('Dumping DB to file...')
+
+  await new Promise((resolve, reject) => {
+    const bkpComand = `pg_dump --dbname=${env.BACKUP_DATABASE_URL} --format=tar | gzip > ${filePath}`
+
+    exec(bkpComand, (error, stdout, stderr) => {
+      if (error) {
+        reject({ error: error, stderr: stderr.trimEnd() })
+        return
+      }
+
+      // check if archive is valid and contains data
+      const isValidArchive =
+        execSync(`gzip -cd ${filePath} | head -c1`).length == 1 ? true : false
+      if (isValidArchive == false) {
+        reject({
+          error:
+            'Backup archive file is invalid or empty; check for errors above',
+        })
+        return
+      }
+
+      // not all text in stderr will be a critical error, print the error / warning
+      if (stderr != '') {
+        console.log({ stderr: stderr.trimEnd() })
+      }
+
+      console.log('Backup archive file is valid')
+      console.log('Backup filesize:', filesize(statSync(filePath).size))
+
+      if (stderr != '') {
+        console.log(
+          `Potential warnings detected; Please ensure the backup file "${path.basename(filePath)}" contains all needed data`,
+        )
+      }
+
+      resolve(undefined)
+    })
+  })
+
+  console.log('DB dumped to file...')
+}
