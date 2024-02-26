@@ -6,15 +6,23 @@
   "scripts": {
     "start": "node dist/index.js",
     "build": "tsc",
-    "dev": "yarn build && yarn start"
+    "dev": "yarn build && yarn start",
+    "release": "yarn build && semantic-release"
   },
   "devDependencies": {
     "@avantpro/eslint-config": "^1.1.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^11.1.0",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^9.2.6",
+    "@semantic-release/release-notes-generator": "^12.1.0",
     "@types/cron": "^2.4.0",
     "@types/node": "^20.11.20",
     "@typescript-eslint/eslint-plugin": "^7.0.2",
     "@typescript-eslint/parser": "^7.0.2",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.56.0",
+    "semantic-release": "^23.0.2",
     "typescript": "^5.3.3"
   },
   "dependencies": {
@@ -22,5 +30,10 @@
     "@aws-sdk/lib-storage": "^3.515.0",
     "cron": "^3.1.6",
     "filesize": "^10.1.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

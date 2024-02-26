@@ -1,0 +1,75 @@
+{
+  "plugins": [
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "preset": "angular",
+        "releaseRules": [
+          {
+            "type": "docs",
+            "release": "patch"
+          },
+          {
+            "type": "refactor",
+            "release": "patch"
+          },
+          {
+            "type": "style",
+            "release": "patch"
+          }
+        ],
+        "parserOpts": {
+          "noteKeywords": [
+            "BREAKING CHANGE",
+            "BREAKING CHANGES",
+            "BREAKING"
+          ]
+        }
+      }
+    ],
+    [
+      "@semantic-release/release-notes-generator",
+      {
+        "preset": "conventionalcommits",
+        "presetConfig": {
+          "types": [
+            {"type": "feat", "section": "Features", "hidden": false},
+            {"type": "fix", "section": "Bug Fixes", "hidden": false},
+            {"type": "perf", "section": "Performance Improvements", "hidden": false},
+            {"type": "revert", "section": "Reverts", "hidden": false},
+            {"type": "docs", "section": "Documentation", "hidden": false},
+            {"type": "style", "section": "Styles", "hidden": false},
+            {"type": "chore", "section": "Miscellaneous Chores", "hidden": true},
+            {"type": "refactor", "section": "Code Refactoring", "hidden": false},
+            {"type": "test", "section": "Tests", "hidden": true},
+            {"type": "build", "section": "Build System", "hidden": true},
+            {"type": "ci", "section": "Continuous Integration", "hidden": true},
+            {"type": "improvement", "section": "Improvement", "hidden": false}
+          ]
+        },
+        "parserOpts": {
+          "noteKeywords": ["BREAKING CHANGE", "BREAKING CHANGES", "BREAKING"]
+        },
+        "writerOpts": {
+          "commitsSort": ["subject", "scope"]
+        }
+      }
+    ],
+    "@semantic-release/github",
+    "@semantic-release/changelog",
+    ["@semantic-release/npm",{
+      "npmPublish":false
+    }],
+    {
+      "path": "@semantic-release/git",
+      "assets": [
+        "package.json",
+        "CHANGELOG.md"
+      ],
+      "message": "chore(release): <%= nextRelease.version %> - <%= new Date().toLocaleDateString('pt-BR', {year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' }) %> [skip ci]\n\n<%= nextRelease.notes %>"
+    }
+  ],
+  "branches": [
+    "main"
+  ]
+}
