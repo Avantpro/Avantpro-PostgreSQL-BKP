@@ -7,6 +7,7 @@ import {
 } from '@aws-sdk/client-s3'
 import { Upload } from '@aws-sdk/lib-storage'
 import { env } from '../env'
+import { log } from '../utils/log'
 
 export async function uploadToS3({
   name,
@@ -15,7 +16,7 @@ export async function uploadToS3({
   name: string
   path: string
 }) {
-  console.log('Uploading backup to S3...')
+  log('Uploading backup to S3...')
 
   const bucket = env.AWS_S3_BUCKET
   const finalName = `${env.AWS_S3_PREFIX}/${name}`
@@ -29,7 +30,7 @@ export async function uploadToS3({
   }
 
   if (env.AWS_S3_ENDPOINT) {
-    console.log(`Using custom endpoint: ${env.AWS_S3_ENDPOINT}`)
+    log(`Using custom endpoint: ${env.AWS_S3_ENDPOINT}`)
     clientOptions['endpoint'] = env.AWS_S3_ENDPOINT
   }
 
@@ -44,7 +45,7 @@ export async function uploadToS3({
     },
   }).done()
 
-  console.log('Backup uploaded to S3...')
+  log('Backup uploaded to S3...')
 
   // Check if there are more than 7 objects in the bucket
   const listParams = {
@@ -71,7 +72,7 @@ export async function uploadToS3({
 
       await client.send(new DeleteObjectCommand(deleteParams))
 
-      console.log(`Deleted oldest backup: ${oldestObjectKey}`)
+      log(`Deleted oldest backup: ${oldestObjectKey}`)
     }
   }
 }

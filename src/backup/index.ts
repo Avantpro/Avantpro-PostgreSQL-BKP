@@ -1,18 +1,19 @@
 import os from 'node:os'
 import path from 'node:path'
+import { log } from '../utils/log'
 import { deleteFile } from './deleteFile'
 import { makeBKP } from './makeBKP'
 import { uploadToS3 } from './uploadToS3'
 
 export const backup = async () => {
-  console.log('Initiating DB backup...')
+  log('Initiating DB backup...')
 
   //Make File Path
   const date = new Date().toISOString()
   const timestamp = date.replace(/[:.]+/g, '-')
   const filename = `backup-${timestamp}.tar.gz`
   const filepath = path.join(os.tmpdir(), filename)
-  console.log('path: ', filepath)
+  log('path: ', filepath)
 
   //Create BKP
   await makeBKP(filepath)

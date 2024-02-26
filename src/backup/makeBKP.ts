@@ -3,9 +3,10 @@ import { exec, execSync } from 'node:child_process'
 import { statSync } from 'node:fs'
 import path from 'node:path'
 import { env } from '../env'
+import { log } from '../utils/log'
 
 export async function makeBKP(filePath: string) {
-  console.log('Dumping DB to file...')
+  log('Dumping DB to file...')
 
   await new Promise((resolve, reject) => {
     const bkpComand = `pg_dump --dbname=${env.BACKUP_DATABASE_URL} --format=tar | gzip > ${filePath}`
@@ -29,14 +30,14 @@ export async function makeBKP(filePath: string) {
 
       // not all text in stderr will be a critical error, print the error / warning
       if (stderr != '') {
-        console.log({ stderr: stderr.trimEnd() })
+        log({ stderr: stderr.trimEnd() })
       }
 
-      console.log('Backup archive file is valid')
-      console.log('Backup filesize:', filesize(statSync(filePath).size))
+      log('Backup archive file is valid')
+      log('Backup filesize:', filesize(statSync(filePath).size))
 
       if (stderr != '') {
-        console.log(
+        log(
           `Potential warnings detected; Please ensure the backup file "${path.basename(filePath)}" contains all needed data`,
         )
       }
@@ -45,5 +46,5 @@ export async function makeBKP(filePath: string) {
     })
   })
 
-  console.log('DB dumped to file...')
+  log('DB dumped to file...')
 }
