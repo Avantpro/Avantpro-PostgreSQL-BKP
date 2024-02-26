@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/compare/v1.0.0...v1.0.1) (2024-02-26)
+
+
+### Documentação
+
+* traduzindo sections para pt-BR ([89a420d](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/commit/89a420d06bdd1799fbb2639d0ac8b9133fca908a))
+
 ## 1.0.0 (2024-02-26)
 
 
