@@ -33,20 +33,20 @@
         "preset": "conventionalcommits",
         "presetConfig": {
           "types": [
-            {"type": "feat", "section": "Features", "hidden": false},
-            {"type": "fix", "section": "Bug Fixes", "hidden": false},
-            {"type": "perf", "section": "Performance Improvements", "hidden": false},
-            {"type": "revert", "section": "Reverts", "hidden": false},
-            {"type": "docs", "section": "Documentation", "hidden": false},
-            {"type": "style", "section": "Styles", "hidden": false},
-            {"type": "chore", "section": "Miscellaneous Chores", "hidden": true},
-            {"type": "refactor", "section": "Code Refactoring", "hidden": false},
-            {"type": "test", "section": "Tests", "hidden": true},
-            {"type": "build", "section": "Build System", "hidden": false},
-            {"type": "ci", "section": "Continuous Integration", "hidden": false},
-            {"type": "improvement", "section": "Improvement", "hidden": false}
+            {"type": "feat", "section": "Recursos", "hidden": false},
+            {"type": "fix", "section": "Correções de Bugs", "hidden": false},
+            {"type": "perf", "section": "Melhorias de Desempenho", "hidden": false},
+            {"type": "revert", "section": "Reversões", "hidden": false},
+            {"type": "docs", "section": "Documentação", "hidden": false},
+            {"type": "style", "section": "Estilos", "hidden": false},
+            {"type": "chore", "section": "Tarefas Diversas", "hidden": true},
+            {"type": "refactor", "section": "Refatoração de Código", "hidden": false},
+            {"type": "test", "section": "Testes", "hidden": true},
+            {"type": "build", "section": "Sistema de Compilação", "hidden": false},
+            {"type": "ci", "section": "Integração Contínua", "hidden": false},
+            {"type": "improvement", "section": "Melhoria", "hidden": false}
           ]
-        },
+        },        
         "parserOpts": {
           "noteKeywords": ["BREAKING CHANGE", "BREAKING CHANGES", "BREAKING"]
         },
