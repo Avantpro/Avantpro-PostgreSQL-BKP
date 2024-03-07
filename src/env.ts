@@ -39,3 +39,5 @@ class envClass {
 }
 
 export const env = new envClass()
+
+export { envClass }
