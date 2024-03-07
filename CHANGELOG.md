@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/compare/v1.0.1...v1.0.2) (2024-03-07)
+
+
+### Documentação
+
+* **readme:** update PostgreSQL and backup schedule ([5fa7ae7](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/commit/5fa7ae79e58c943b9b765af1efba459fff583d69))
+
 ## [1.0.1](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/compare/v1.0.0...v1.0.1) (2024-02-26)
 
 
