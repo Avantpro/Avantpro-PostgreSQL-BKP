@@ -1,3 +1,21 @@
+## [1.0.3](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/compare/v1.0.2...v1.0.3) (2024-04-03)
+
+
+### Correções de Bugs
+
+* **upload-s3:** ajutando bkp para verificar tamanho somenta da pasta configurada ([a284507](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/commit/a2845070d85fb3f50e0f2ec228ac7708267419f1))
+* **build:** removendo teste do build ([329510b](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/commit/329510b8525ba25841560a54ae1ac97227d5c3cb))
+
+
+### Refatoração de Código
+
+* **log:** mudar formato de log da versão node ([f90a048](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/commit/f90a04863f7c91e9b7e887af591d7fbf181cddac))
+
+
+### Integração Contínua
+
+* **github:** update test command in GitHub Actions workflow ([b47fb75](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/commit/b47fb75b6e4a2bb85cb32d665ac10fd4338e5be4))
+
 ## [1.0.2](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/compare/v1.0.1...v1.0.2) (2024-03-07)
 
 
