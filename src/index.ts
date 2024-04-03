@@ -3,7 +3,7 @@ import { backup } from './backup'
 import { env } from './env'
 import { log } from './utils/log'
 
-console.log('NodeJS Version: ' + process.version)
+log('NodeJS Version:', process.version)
 
 async function tryBackup() {
   try {
