@@ -50,7 +50,11 @@ export async function uploadToS3({
   // Check if there are more than 7 objects in the bucket
   const listParams = {
     Bucket: bucket,
+    Prefix: env.AWS_S3_PREFIX, // Specify the prefix to list objects only from the 'production' folder
   }
+
+  log('Start Clean...')
+
   const { Contents } = await client.send(new ListObjectsV2Command(listParams))
   if (Contents && Contents.length > env.BACKUP_KEEP) {
     // Sort objects by LastModified date
@@ -75,4 +79,6 @@ export async function uploadToS3({
       log(`Deleted oldest backup: ${oldestObjectKey}`)
     }
   }
+
+  log('End Clean...')
 }
