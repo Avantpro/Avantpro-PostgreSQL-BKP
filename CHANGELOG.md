@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/compare/v1.0.4...v1.0.5) (2024-04-09)
+
+
+### Correções de Bugs
+
+* remove 'Merge develop' step from GitHub Actions workflow ([41d4326](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/commit/41d43262b8da434cfda5761182a4b553b2113106))
+
 ## [1.0.4](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/compare/v1.0.3...v1.0.4) (2024-04-09)
 
 
