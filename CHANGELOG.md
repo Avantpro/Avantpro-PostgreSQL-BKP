@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/compare/v1.0.3...v1.0.4) (2024-04-09)
+
+
+### Documentação
+
+* **readme:** retira opçional da variavel 'SCHEDULE' ([1fa2649](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/commit/1fa2649ec1e0024d994c7219844ad7e1c67ef078))
+
 ## [1.0.3](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/compare/v1.0.2...v1.0.3) (2024-04-03)
 
 
