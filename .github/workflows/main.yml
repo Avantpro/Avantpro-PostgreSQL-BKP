@@ -31,9 +31,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: yarn release
-      - name: Merge develop
-        uses: devmasx/merge-branch@master
-        with:
-          label_name: 'merged in develop'
-          target_branch: 'develop'
-          github_token: ${{ secrets.GITHUB_TOKEN }}
