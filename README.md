@@ -17,7 +17,7 @@ services:
   backup:
     image: avantpro/postgres-backup-s3:16
     environment:
-      SCHEDULE: '0 0 * * 5'     # optional , At 12:00 AM, only on Friday
+      SCHEDULE: '0 0 * * 5'     # At 12:00 AM, only on Friday
       BACKUP_KEEP: 7     # optional
       RUN_ON_STARTUP: 'true' # optional
       AWS_S3_REGION: 'region'
