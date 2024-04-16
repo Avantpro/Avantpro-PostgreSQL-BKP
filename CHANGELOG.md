@@ -1,3 +1,16 @@
+## [1.0.6](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/compare/v1.0.5...v1.0.6) (2024-04-16)
+
+
+### Documentação
+
+* **readme:** update backup image in README.md ([c621647](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/commit/c621647d47d110954f9ae497bad03055a4eb5d43))
+
+
+### Integração Contínua
+
+* add Docker build and push steps to GitHub Actions workflow ([1587c0d](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/commit/1587c0ddf715f61e543c747252cc7b6d177ceb87))
+* merge main branch into develop ([867c961](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/commit/867c96151d98b9f0cf2bac810195f64d75f0dbed))
+
 ## [1.0.5](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/compare/v1.0.4...v1.0.5) (2024-04-09)
 
 
