@@ -15,7 +15,7 @@ services:
       POSTGRES_PASSWORD: 'password'
 
   backup:
-    image: avantpro/postgres-backup-s3:16
+    image: carloslauriano/postgres-backu-s3
     environment:
       SCHEDULE: '0 0 * * 5'     # At 12:00 AM, only on Friday
       BACKUP_KEEP: 7     # optional
