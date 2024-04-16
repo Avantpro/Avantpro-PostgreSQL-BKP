@@ -72,12 +72,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Merge main -> develop
-        uses: devmasx/merge-branch@master
-        with:
-          type: now
-          label_name: 'merged in develop'
-          from_branch: 'main'
-          target_branch: 'develop'
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Merge main into developer
+        run: |
+          git checkout developer
+          git merge main --no-ff --no-edit
+          git push origin developer
 
