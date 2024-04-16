@@ -65,7 +65,7 @@ jobs:
           docker push carloslauriano/postgres-backu-s3:latest
 
   sincronizacao:
-    name: sincronização
+    name: Sincronização
     needs: release
     runs-on: ubuntu-latest
     steps:
@@ -75,7 +75,9 @@ jobs:
       - name: Merge main -> develop
         uses: devmasx/merge-branch@master
         with:
+          type: now
           label_name: 'merged in develop'
+          from_branch: 'main'
           target_branch: 'develop'
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
