@@ -19,7 +19,13 @@ export async function uploadToS3({
   log('Uploading backup to S3...')
 
   const bucket = env.AWS_S3_BUCKET
-  const finalName = `${env.AWS_S3_PREFIX}/${name}`
+
+  let finalName
+  if (env.AWS_S3_PREFIX != '') {
+    finalName = `${env.AWS_S3_PREFIX}/${name}`
+  } else {
+    finalName = name
+  }
 
   const clientOptions: S3ClientConfig = {
     region: env.AWS_S3_REGION,
