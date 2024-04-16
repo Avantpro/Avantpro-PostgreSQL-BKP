@@ -2,6 +2,8 @@
 
 This project provides Docker images to periodically back up a PostgreSQL database to AWS S3
 
+### [Change Log](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/blob/main/CHANGELOG.md)
+
 # Usage
 
 ## Backup
