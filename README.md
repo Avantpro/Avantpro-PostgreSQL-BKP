@@ -30,3 +30,5 @@ services:
       POSTGRES_USER: 'user'
       POSTGRES_PASSWORD: 'password'
 ```
+
+Link Docker Hub: <https://hub.docker.com/r/carloslauriano/postgres-backu-s3>
