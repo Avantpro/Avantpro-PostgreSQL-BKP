@@ -1,3 +1,23 @@
+## [1.0.7](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/compare/v1.0.6...v1.0.7) (2024-04-16)
+
+
+### Correções de Bugs
+
+* **upload-to-s3:** remove a obrigatoriedade de usar o parâmetro AWS_S3_PREFIX ([7750272](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/commit/7750272f6637ae1375fcd6c08168a1c7ff82eed3))
+
+
+### Integração Contínua
+
+* add release and builddocker jobs to GitHub Actions workflow ([653facc](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/commit/653faccac5c5aaa8b5008b876033b8c967d15d66))
+* fix branch name in GitHub Actions workflow ([24aa4a9](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/commit/24aa4a9f1c23e64e39bbb9c541753bebeba88b06))
+* fix typo in workflow step name ([ceee920](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/commit/ceee920d7bf6c319f9c8094713969d404be1ba65))
+* merge main branch into develop ([a1a6e6b](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/commit/a1a6e6b75d76a8ec7ee961e50924ec51741726a7))
+* merge main branch into develop ([b5e5dfc](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/commit/b5e5dfcdf8c55dd1bbbd713bbb012ee3f17db80e))
+* merge main branch into developer ([739e5e7](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/commit/739e5e7e0ffb6200dab88e5d3bbb811a0ce77cd8))
+* merged in develop ([2537eed](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/commit/2537eed6770394557abf4382b084f10a4d43c762))
+* teste mearge ([c726ce2](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/commit/c726ce277bd14617e8edc644794b47c2ef099368))
+* teste Token ([5fec16f](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/commit/5fec16f20dbe220272294eb16fa55257a50afbf1))
+
 ## [1.0.6](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/compare/v1.0.5...v1.0.6) (2024-04-16)
 
 
