@@ -64,4 +64,18 @@ jobs:
           docker tag carloslauriano/postgres-backu-s3:${{ steps.generate_sha.outputs.sha }} carloslauriano/postgres-backu-s3:latest
           docker push carloslauriano/postgres-backu-s3:latest
 
+  sincronizacao:
+    name: sincronização
+    needs: release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Merge main -> develop
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          target_branch: develop
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
