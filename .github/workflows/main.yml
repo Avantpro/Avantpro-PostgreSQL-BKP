@@ -74,7 +74,7 @@ jobs:
 
       - name: Merge main into developer
         run: |
-          git checkout developer
+          git checkout develop
           git merge main --no-ff --no-edit
-          git push origin developer
+          git push origin develop
 
