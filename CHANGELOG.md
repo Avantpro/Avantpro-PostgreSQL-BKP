@@ -1,3 +1,9 @@
+## [1.0.8](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/compare/v1.0.7...v1.0.8) (2024-11-04)
+
+### Refatoração de Código
+
+* change backup filename extension to .tar.gz and update backup command to use tar ([0707d58](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/commit/0707d58d803dc8be8feb0fa055ca21dbf2c0d59c))
+
 ## [1.0.7](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/compare/v1.0.6...v1.0.7) (2024-04-16)
 
 
