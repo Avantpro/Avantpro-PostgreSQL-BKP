@@ -9,7 +9,7 @@ export async function makeBKP(filePath: string) {
   log('Dumping DB to file...')
 
   await new Promise((resolve, reject) => {
-    const bkpComand = `pg_dump --dbname=${env.BACKUP_DATABASE_URL} --format=tar | gzip > ${filePath}`
+    const bkpComand = `pg_dump --dbname=${env.BACKUP_DATABASE_URL} --format=custom | gzip > ${filePath}`
 
     exec(bkpComand, (error, stdout, stderr) => {
       if (error) {
