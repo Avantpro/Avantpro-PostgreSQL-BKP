@@ -11,8 +11,6 @@ export async function makeBKP(filePath: string) {
   await new Promise((resolve, reject) => {
     const bkpComand = `pg_dump --dbname=${env.BACKUP_DATABASE_URL} --format=tar | gzip > ${filePath}`
 
-    console.log(bkpComand)
-
     exec(bkpComand, (error, stdout, stderr) => {
       if (error) {
         reject({ error: error, stderr: stderr.trimEnd() })
@@ -21,11 +19,9 @@ export async function makeBKP(filePath: string) {
 
       // check if archive is valid and contains data
       const fileSize = execSync(`gzip -cd ${filePath} | head -c1`).length;
-      console.log('fileSize',fileSize)
       const isValidArchive = fileSize == 1 ? true : false
       if (isValidArchive == false) {
         reject({
-          error:
             'Backup archive file is invalid or empty; check for errors above',
         })
         return
