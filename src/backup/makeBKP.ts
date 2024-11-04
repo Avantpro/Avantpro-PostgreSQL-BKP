@@ -11,6 +11,8 @@ export async function makeBKP(filePath: string) {
   await new Promise((resolve, reject) => {
     const bkpComand = `pg_dump --dbname=${env.BACKUP_DATABASE_URL} --format=tar | gzip > ${filePath}`
 
+    console.log(bkpComand)
+
     exec(bkpComand, (error, stdout, stderr) => {
       if (error) {
         reject({ error: error, stderr: stderr.trimEnd() })
