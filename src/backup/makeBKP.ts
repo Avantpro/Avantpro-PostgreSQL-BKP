@@ -18,8 +18,9 @@ export async function makeBKP(filePath: string) {
       }
 
       // check if archive is valid and contains data
-      const isValidArchive =
-        execSync(`gzip -cd ${filePath} | head -c1`).length == 1 ? true : false
+      const fileSize = execSync(`gzip -cd ${filePath} | head -c1`).length;
+      console.log('fileSize',fileSize)
+      const isValidArchive = fileSize == 1 ? true : false
       if (isValidArchive == false) {
         reject({
           error:
