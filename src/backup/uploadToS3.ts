@@ -46,7 +46,7 @@ export async function uploadToS3({
     client,
     params: {
       Bucket: bucket,
-      Key: finalName,
+      Key: finalName + '.tar.gz',
       Body: createReadStream(path + '.tar.gz'),
     },
   }).done()

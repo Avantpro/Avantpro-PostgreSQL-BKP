@@ -1,3 +1,9 @@
+## [1.0.12](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/compare/v1.0.11...v1.0.12) (2024-11-07)
+
+### Refatoração de Código
+
+* append .tar.gz extension to S3 upload key for consistency ([43a744b](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/commit/43a744b226566bb4897e2a4c604e3c046bc358bf))
+
 ## [1.0.11](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/compare/v1.0.10...v1.0.11) (2024-11-07)
 
 ### Refatoração de Código
