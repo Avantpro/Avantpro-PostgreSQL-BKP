@@ -9,7 +9,7 @@ export async function makeBKP(filePath: string) {
   log('Dumping DB to file...')
 
   await new Promise((resolve, reject) => {
-    const bkpCommand = `pg_dump --dbname=${env.BACKUP_DATABASE_URL} --format=p --encoding=UTF-8 --file=${filePath}.sql`
+    const bkpCommand = `pg_dump --dbname=${env.BACKUP_DATABASE_URL} --format=c --encoding=UTF-8 --file=${filePath}.backup`
 
     exec(bkpCommand, (error, stdout, stderr) => {
       if (error) {
@@ -17,13 +17,11 @@ export async function makeBKP(filePath: string) {
         return
       }
 
-      // Check if the SQL file contains data by reading the first line
-      const hasContent =
-        execSync(`head -c1 ${filePath}.sql`).length == 1 ? true : false
-
-      if (!hasContent) {
+      // Check if the backup file exists and has content by checking its size
+      const fileStats = statSync(`${filePath}.backup`)
+      if (fileStats.size === 0) {
         reject({
-          error: 'Backup SQL file is invalid or empty; check for errors above',
+          error: 'Backup file is invalid or empty; check for errors above',
         })
         return
       }
@@ -32,8 +30,8 @@ export async function makeBKP(filePath: string) {
         log({ stderr: stderr.trimEnd() })
       }
 
-      log('Backup SQL file is valid')
-      log('Backup filesize:', filesize(statSync(`${filePath}.sql`).size))
+      log('Backup file is valid')
+      log('Backup filesize:', filesize(fileStats.size))
 
       if (stderr != '') {
         log(
@@ -41,13 +39,14 @@ export async function makeBKP(filePath: string) {
         )
       }
 
-      // Compress the .sql file to .tar.gz
-      const tarCommand = `tar -czvf ${filePath}.tar.gz ${filePath}.sql`
+      // Compress the .backup file to .tar.gz
+      const tarCommand = `tar -czvf ${filePath}.tar.gz ${filePath}.backup`
       execSync(tarCommand)
-      log('Compressed SQL dump to tar.gz')
+      log('Compressed backup to tar.gz')
 
       // Log final compressed file size
-      log('Compressed filesize:', filesize(statSync(`${filePath}.tar.gz`).size))
+      const compressedFileStats = statSync(`${filePath}.tar.gz`)
+      log('Compressed filesize:', filesize(compressedFileStats.size))
 
       resolve(undefined)
     })
