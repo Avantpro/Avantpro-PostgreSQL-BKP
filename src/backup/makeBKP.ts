@@ -17,16 +17,13 @@ export async function makeBKP(filePath: string) {
         return
       }
 
-      // Check if archive is valid and contains data
-      const isValidArchive =
-        execSync(`gzip -cd ${filePath}.sql | head -c1`).length == 1
-          ? true
-          : false
+      // Check if the SQL file contains data by reading the first line
+      const hasContent =
+        execSync(`head -c1 ${filePath}.sql`).length == 1 ? true : false
 
-      if (isValidArchive == false) {
+      if (!hasContent) {
         reject({
-          error:
-            'Backup archive file is invalid or empty; check for errors above',
+          error: 'Backup SQL file is invalid or empty; check for errors above',
         })
         return
       }
@@ -35,7 +32,7 @@ export async function makeBKP(filePath: string) {
         log({ stderr: stderr.trimEnd() })
       }
 
-      log('Backup archive file is valid')
+      log('Backup SQL file is valid')
       log('Backup filesize:', filesize(statSync(`${filePath}.sql`).size))
 
       if (stderr != '') {
