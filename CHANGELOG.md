@@ -1,3 +1,9 @@
+## [1.0.13](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/compare/v1.0.12...v1.0.13) (2024-11-07)
+
+### Refatoração de Código
+
+* enhance file deletion and backup process, update file extensions and logging ([89d5867](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/commit/89d5867e71c500f1fcb3c330b17bab0e753da300))
+
 ## [1.0.12](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/compare/v1.0.11...v1.0.12) (2024-11-07)
 
 ### Refatoração de Código
