@@ -1,3 +1,9 @@
+## [1.0.11](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/compare/v1.0.10...v1.0.11) (2024-11-07)
+
+### Refatoração de Código
+
+* improve validation for SQL backup file, check for content instead of archive validity ([c3f9c00](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/commit/c3f9c004ace76592f27c91c4bdfc85a7fd6cd498))
+
 ## [1.0.10](https://github.com/Avantpro/Avantpro-PostgreSQL-BKP/compare/v1.0.9...v1.0.10) (2024-11-07)
 
 ### Refatoração de Código
