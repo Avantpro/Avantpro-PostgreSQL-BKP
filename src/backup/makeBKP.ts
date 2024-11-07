@@ -9,17 +9,19 @@ export async function makeBKP(filePath: string) {
   log('Dumping DB to file...')
 
   await new Promise((resolve, reject) => {
-    const bkpComand = `pg_dump --dbname=${env.BACKUP_DATABASE_URL} --format=tar | gzip > ${filePath}`
+    const bkpCommand = `pg_dump --dbname=${env.BACKUP_DATABASE_URL} --format=p --encoding=UTF-8 --file=${filePath}.sql`
 
-    exec(bkpComand, (error, stdout, stderr) => {
+    exec(bkpCommand, (error, stdout, stderr) => {
       if (error) {
         reject({ error: error, stderr: stderr.trimEnd() })
         return
       }
 
-      // check if archive is valid and contains data
+      // Check if archive is valid and contains data
       const isValidArchive =
-        execSync(`gzip -cd ${filePath} | head -c1`).length == 1 ? true : false
+        execSync(`gzip -cd ${filePath}.sql | head -c1`).length == 1
+          ? true
+          : false
 
       if (isValidArchive == false) {
         reject({
@@ -29,13 +31,12 @@ export async function makeBKP(filePath: string) {
         return
       }
 
-      // not all text in stderr will be a critical error, print the error / warning
       if (stderr != '') {
         log({ stderr: stderr.trimEnd() })
       }
 
       log('Backup archive file is valid')
-      log('Backup filesize:', filesize(statSync(filePath).size))
+      log('Backup filesize:', filesize(statSync(`${filePath}.sql`).size))
 
       if (stderr != '') {
         log(
@@ -43,9 +44,17 @@ export async function makeBKP(filePath: string) {
         )
       }
 
+      // Compress the .sql file to .tar.gz
+      const tarCommand = `tar -czvf ${filePath}.tar.gz ${filePath}.sql`
+      execSync(tarCommand)
+      log('Compressed SQL dump to tar.gz')
+
+      // Log final compressed file size
+      log('Compressed filesize:', filesize(statSync(`${filePath}.tar.gz`).size))
+
       resolve(undefined)
     })
   })
 
-  log('DB dumped to file...')
+  log('DB dumped and compressed to file...')
 }
