@@ -11,7 +11,7 @@ export const backup = async () => {
   //Make File Path
   const date = new Date().toISOString()
   const timestamp = date.replace(/[:.]+/g, '-')
-  const filename = `backup-${timestamp}.tar`
+  const filename = `backup-${timestamp}`
   const filepath = path.join(os.tmpdir(), filename)
   log('path: ', filepath)
 
